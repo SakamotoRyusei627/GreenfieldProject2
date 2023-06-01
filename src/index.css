@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  font-family: Tahoma, Verdana, Segoe, sans-serif;
+  font-size: 24px;
+  color: rgb(47, 47, 47);
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,h2,h3,h4,h5 {
+  margin: 0;
+}
+
+#root{
+  width: 100vw;
+}
+
+main {
+  position: fixed;
+  top: 19vh;
+  height: 83vh;
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items:start;
+}
+
+article{
+  width: 92%;
+  height: 69vh;
+  overflow-y: scroll;
+  margin-bottom: 3vh;
+}
+
+.dummy{
+  position: absolute;
+  top: 7vh;
+  right: 5vw;
+  border-radius: 50%;
+}
