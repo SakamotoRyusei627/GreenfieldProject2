@@ -2,12 +2,11 @@
  * @type { Object.<string, import("knex").Knex.Config> }
  */
 module.exports = {
-
   development: {
-    client: 'pg',
+    client: "pg",
     connection: {
-      database: 'gf',
-      user: 'user',
+      database: "gf",
+      user: "RYUSEI",
     },
     migrations: {
       directory: "./data/migrations",
@@ -16,12 +15,11 @@ module.exports = {
   },
 
   production: {
-    client: 'pg',
-    connection:process.env.DATABASE_URL,
+    client: "pg",
+    connection: process.env.DATABASE_URL,
     migrations: {
       directory: "./data/migrations",
     },
     seeds: { directory: "./data/seeds" },
-  }
-
+  },
 };
