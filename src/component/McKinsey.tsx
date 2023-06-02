@@ -1,11 +1,10 @@
 import { useContext } from "react";
-import "./McKinsey.css"
+import "./McKinsey.css";
 import { SetVariableArray } from "./common/Main";
 
 export default function McKinsey() {
   const [, , choice] = useContext(SetVariableArray);
   console.log(choice);
-  
 
   return (
     <div className="content">
@@ -13,12 +12,18 @@ export default function McKinsey() {
       <section>
         <ul>
           {choice.map((e, ind) => {
-            return <li>{e["food-name"]+"・・・"+e["quantity"]+e["quantity-unit"]}</li>
+            return (
+              <li key={ind}>
+                {e["food-name"] + "・・・" + e["quantity"] + e["quantity-unit"]}
+              </li>
+            );
           })}
           <li></li> {/* スペーサー※消さない*/}
         </ul>
       </section>
-      <div className="choiceFood">料理長にお願い<span>♥</span></div>
+      <div className="choiceFood">
+        料理長にお願い<span>♥</span>
+      </div>
       <section>
         <div>
           <div className="iconArea">

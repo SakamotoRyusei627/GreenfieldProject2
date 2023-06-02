@@ -4,71 +4,71 @@ const port = 3333;
 const knex = require("./src/db/index");
 
 const arrangeDate = (e, key) => {
-    return (
-        e[key].getFullYear() +
-        "-" +
-        (e[key].getMonth() + 1) +
-        "-" +
-        e[key].getDate()
-      );
-    };
+  return (
+    e[key].getFullYear() +
+    "-" +
+    (e[key].getMonth() + 1) +
+    "-" +
+    e[key].getDate()
+  );
+};
 
-app.listen(port,()=>{
-    console.log(`server started @:${port}`)
+app.listen(port, () => {
+  console.log(`server started @:${port}`);
 });
 
 app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    next();
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  next();
 });
 
 app.get("/food/:loginID", async (req, res) => {
-    const data = await knex
-      .select("*")
-      .from("GF_food")
-      .where({ "login-id_f": req.params.loginID })
-      .then((e) => e);
-    const newdata = data.map((e) =>
-      e["expiration-date"] !== null
-        ? {
-            ...e,
-            "registration-date": arrangeDate(e, "registration-date"),
-            "expiration-date": arrangeDate(e, "expiration-date"),
-          }
-        : {
-            ...e,
-            "registration-date": arrangeDate(e, "registration-date"),
-            "expiration-date": "-",
-          }
-    );
-    res.status(200);
-    res.send(newdata);
+  const data = await knex
+    .select("*")
+    .from("GF_food")
+    .where({ "login-id_f": req.params.loginID })
+    .then((e) => e);
+  const newdata = data.map((e) =>
+    e["expiration-date"] !== null
+      ? {
+          ...e,
+          "registration-date": arrangeDate(e, "registration-date"),
+          "expiration-date": arrangeDate(e, "expiration-date"),
+        }
+      : {
+          ...e,
+          "registration-date": arrangeDate(e, "registration-date"),
+          "expiration-date": "-",
+        }
+  );
+  res.status(200);
+  res.send(newdata);
 });
 
 app.get("/previousCook/:loginID", async (req, res) => {
-    const data = await knex
-      .select("*")
-      .from("GF_previousCook")
-      .where({ "login-id_p": req.params.loginID })
-      .then((e) => e);
-    const newdata = data.map((e) => ({
-      ...e,
-      "cooking-date": arrangeDate(e, "cooking-date"),
-    }));
-    const keys = [...new Set(newdata.map((e) => e["cooking-date"]))];
-    const result = keys.reduce((init, val) => {
-      return [
-        ...init,
-        {
-          "cooking-date": val,
-          dishes: newdata
-            .filter((e) => e["cooking-date"] === val)
-            .map((e) => e.dishes),
-        },
-      ];
-    }, []);
-    res.status(200);
-    res.send(result);
+  const data = await knex
+    .select("*")
+    .from("GF_previousCook")
+    .where({ "login-id_p": req.params.loginID })
+    .then((e) => e);
+  const newdata = data.map((e) => ({
+    ...e,
+    "cooking-date": arrangeDate(e, "cooking-date"),
+  }));
+  const keys = [...new Set(newdata.map((e) => e["cooking-date"]))];
+  const result = keys.reduce((init, val) => {
+    return [
+      ...init,
+      {
+        "cooking-date": val,
+        dishes: newdata
+          .filter((e) => e["cooking-date"] === val)
+          .map((e) => e.dishes),
+      },
+    ];
+  }, []);
+  res.status(200);
+  res.send(result);
 });
 
 const API_KEY = process.env.OPENAI_API_KEY;
@@ -89,7 +89,7 @@ const openai = new OpenAIApi(configuration);
       {
         role: "user",
         content:
-          "あなたは優秀なシェフです。語尾にザマスをつけて牛肉1パックと玉ねぎ1個で2人分の献立のレシピを教えてください",
+          "牛乳1000mlと卵4個だけを使用するレシピを3つ教えて下さい。それぞれのレシピで使用した分量を引いたキーバリューペアのオブジェクトも返してください。",
       },
     ],
   });
