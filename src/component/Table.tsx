@@ -5,22 +5,22 @@ type props = {
     "food-name": string;
     "quantity": string;
     "quantity-unit": string;
-    "expiration-date": string//Date;
-    "registration-date": string//Date;
+    "expiration-date": string;
+    "registration-date": string;
   }[];
 };
 
 export default function Table ({foodList}:props){
   const data = document.querySelectorAll("input[type='checkbox']")as NodeListOf<HTMLInputElement>;
   data.forEach(e=>{if(e.checked){console.log(e.id)}});
-  
+
   return (
     <table>
       <thead><tr>
           <th colSpan={2}>な・か・み<span>♥</span></th>
           <th>購入日</th>
           <th>消費期限</th>
-          <th colSpan={2}>残り</th>      
+          <th colSpan={2}>残り</th>
       </tr></thead>
       <tbody>
       {foodList.map((foodData, ind) => (
@@ -39,4 +39,3 @@ export default function Table ({foodList}:props){
     </table>
   );
 };
-//  Table;

@@ -2,7 +2,13 @@ import React, { useContext } from "react";
 import { FlagContext } from "../App";
 import { SetVariableArray } from "./Main";
 
-const Button = () => {
+type props = {
+  foodList: any;
+  setFoodList: any;
+  buyFood: any;
+}
+
+const Button: React.FC<props> = ({ foodList, setFoodList, buyFood }) => {
   const [, setFlag, setPageList] = useContext(FlagContext);
   const [setButtonArray, buttonArray, , setChoice] = useContext(SetVariableArray);
 
@@ -31,7 +37,7 @@ const Button = () => {
               break;
             case 2:
               setPageList([{text: "冷蔵庫", num:1},{text: "買い物袋",num: 2}]);
-              setButtonArray([{text: "登録", flag: 1, func: ()=>{}},{text: "戻る", flag: 1, func: ()=>{}}]);
+              setButtonArray([{text: "登録", flag: 1, func: ()=>{console.log("setFoodList([...foodList, ...add])", buyFood)}},{text: "戻る", flag: 1, func: ()=>{}}]);
               break;
             case 3:
               setPageList([{text: "冷蔵庫", num:1},{text: "料理長",num: 3}]);
