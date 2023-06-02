@@ -46,4 +46,3 @@ export default function Breadcrumbs({pageList, setFlag}: {pageList:{text:string,
     </span>
   );
 }
-

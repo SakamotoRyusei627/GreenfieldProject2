@@ -1,17 +1,19 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { RefObject, useContext, useEffect, useRef, useState } from "react";
 import Table from "../Table";
 import ContentArea from "./ContentArea";
 import ShoppingList from "../ShoppingList";
 import McKinsey from "../McKinsey";
 import PastMenuList from "../PastMenuList";
 import { FlagContext } from "../App";
+
 type props = [
   setButtonArray : React.Dispatch<React.SetStateAction<{text: string, flag: number, func: ()=> void}[]>>,
   buttonArray: {text: string, flag: number, func: ()=> void}[],
   choice : {"food-name":string,"registration-date":string,"expiration-date":string,"quantity":string,"quantity-unit":string}[],
   setChoice:React.Dispatch<React.SetStateAction<{"food-name":string,"registration-date":string,"expiration-date":string,"quantity":string,"quantity-unit":string}[]>>
 ]
-export const SetVariableArray = React.createContext<props>([()=>{}, [], [], ()=>{}])
+
+export const SetVariableArray = React.createContext<props>([()=>{}, [], [], ()=>{}]);
 
 const Main = () => {
   const [foodList, setFoodList] = useState([]);
@@ -46,11 +48,25 @@ const Main = () => {
     getData();
   },[])
 
+  const foodNameRef = useRef<HTMLInputElement[]>([]);
+  const registrationDate = useRef<HTMLInputElement[]>([]);
+  const expirationDate = useRef<HTMLInputElement[]>([]);
+  const quantity = useRef<HTMLInputElement[]>([]);
+  const quantityUnit = useRef<HTMLInputElement[]>([]);
+
+  const buyFood = {
+    foodNameRef: foodNameRef.current?.map((ref) => ref?.value),
+    registrationDate: registrationDate.current?.map((ref) => ref?.value),
+    expirationDate: expirationDate.current?.map((ref) => ref?.value),
+    quantity: quantity.current?.map((ref) => ref?.value),
+    quantityUnit: quantityUnit.current?.map((ref) => ref?.value),
+  };
+
   return (
     <SetVariableArray.Provider value={[setButtonArray, buttonArray, choice, setChoice]}>
-      <ContentArea text={pageList[pageList.length-1].text}>
+      <ContentArea text={pageList[pageList.length-1].text} foodList={foodList} setFoodList={setFoodList} buyFood={buyFood} >
         {flag === 1 && <Table foodList={foodList} />}
-        {flag === 2 && <ShoppingList />}
+        {flag === 2 && <ShoppingList foodNameRef={foodNameRef} registrationDate={registrationDate} expirationDate={expirationDate} quantity={quantity} quantityUnit={quantityUnit} />}
         {flag === 3 && <McKinsey />}
         {flag === 4 && <PastMenuList cookList={cookList}/>}
       </ContentArea>
