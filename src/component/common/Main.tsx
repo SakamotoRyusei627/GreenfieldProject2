@@ -39,7 +39,10 @@ type props = [
   message: { title: string; list: string[] }[],
   setMessage: any,
   resistFood: any,
-  setResistFood: any
+  setResistFood: any,
+  // 追加
+  selectMessage: any,
+  setSelectMessage: any
 ];
 
 export const SetVariableArray = React.createContext<props>([
@@ -51,14 +54,19 @@ export const SetVariableArray = React.createContext<props>([
   () => {},
   [],
   () => {},
+  {},
+  () => {},
 ]);
 
 const Main = () => {
+  // ↓追加
+  const [selectMessage, setSelectMessage] = useState({});
+
   const [foodList, setFoodList] = useState([]);
   const [cookList, setCookList] = useState([]);
   const [choice, setChoice] = useState([
     {
-      "food-name": "",
+      "food-name": "初期",
       "registration-date": "",
       "expiration-date": "",
       quantity: "",
@@ -92,7 +100,7 @@ const Main = () => {
 
         // ################
         const datas = [...document.querySelectorAll(".handOverdata")];
-        console.log("####datas#####");
+        console.log("####Main_datas#####");
 
         console.log(datas);
 
@@ -108,15 +116,36 @@ const Main = () => {
             "quantity-unit":
               e.getElementsByClassName("quantity-unit")[0].innerHTML,
           }));
+
+        console.log(
+          "%c########Main_func",
+          "color:#0000FF",
+          filterDatas[0]["food-name"]
+        );
         console.log({ filterDatas });
 
         // setChoice(datas);
         setChoice(filterDatas);
+        console.log(filterDatas);
+
+        return filterDatas;
       },
     },
 
     { text: "先週の献立", flag: 4, func: () => {} },
   ]);
+
+  // 監視用
+  useEffect(() => {
+    console.log("choiceが変わったよ");
+    console.log(choice);
+  }, [choice]);
+
+  useEffect(() => {
+    console.log("selectMessageが変わったよ");
+  }, [selectMessage]);
+
+  // ＃＃＃＃＃＃＃＃＃＃＃＃
 
   const [flag, , , pageList] = useContext(FlagContext);
 
@@ -159,6 +188,9 @@ const Main = () => {
         setMessage,
         resistFood,
         setResistFood,
+        // 追加
+        selectMessage,
+        setSelectMessage,
       ]}
     >
       <ContentArea

@@ -6,7 +6,7 @@ module.exports = {
     client: "pg",
     connection: {
       database: "gf",
-      user: "RYUSEI",
+      user: "user",
     },
     migrations: {
       directory: "./data/migrations",

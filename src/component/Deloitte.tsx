@@ -1,16 +1,17 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Propose from "./Propose";
 import Engagement from "./Engagement";
 import { FlagContext } from "./App";
+import { SetVariableArray } from "./common/Main";
 
 export default function Deloitte() {
   const [flag] = useContext(FlagContext);
-  const [selectMessage, setSelectMessage] = useState({});
+  console.log("AAAAAAAAAAAAA");
 
   return (
     <>
-      {flag === 5 && <Propose setSelectMessage={setSelectMessage} />}
-      {flag === 6 && <Engagement selectMessage={selectMessage} />}
+      {flag === 5 && <Propose />}
+      {flag === 6 && <Engagement />}
     </>
   );
 }
