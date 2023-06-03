@@ -43,7 +43,8 @@ type props = [
   // 追加
   selectMessage: any,
   setSelectMessage: any,
-  formButtonRef: any
+  formButtonRef: any,
+  setCookList: any,
 ];
 
 export const SetVariableArray = React.createContext<props>([
@@ -58,6 +59,7 @@ export const SetVariableArray = React.createContext<props>([
   {},
   () => {},
   null,
+  [],
 ]);
 
 const Main = () => {
@@ -198,6 +200,7 @@ const Main = () => {
         selectMessage,
         setSelectMessage,
         formButtonRef,
+        setCookList
       ]}
     >
       <ContentArea

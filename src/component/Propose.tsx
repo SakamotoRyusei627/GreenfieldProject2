@@ -23,6 +23,7 @@ export default function Propose() {
     // 追加
     selectMessage,
     setSelectMessage,
+    setCookList,
   ] = useContext(SetVariableArray);
 
   return (
@@ -64,6 +65,7 @@ export default function Propose() {
                           body: JSON.stringify(elem),
                         }
                       );
+                      setCookList(postData);
                     }
                   },
                   { text: "戻る", flag: 5, func: () => {} },
