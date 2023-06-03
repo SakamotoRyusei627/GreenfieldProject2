@@ -3,6 +3,9 @@ const app = express();
 const port = 3333;
 const knex = require("./src/db/index");
 
+const path = require('path');
+app.use(express.static(path.join(__dirname, 'build')));
+
 const arrangeDate = (e, key) => {
   return (
     e[key].getFullYear() +
@@ -13,7 +16,11 @@ const arrangeDate = (e, key) => {
   );
 };
 
-app.listen(port, () => {
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+app.listen(process.env.PORT || port, () => {
   console.log(`server started @:${port}`);
 });
 
