@@ -131,7 +131,7 @@ const Button: React.FC<props> = ({ foodList, setFoodList, buyFood }) => {
                             headers: {
                               "Content-Type": "application/json",
                             },
-                            body: resistFood,
+                            body: JSON.stringify(resistFood),
                           }
                         ).then((res) => res.json());
                         await setFoodList(fetchData);
