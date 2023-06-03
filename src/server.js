@@ -105,8 +105,8 @@ app.post("/food/:loginID", async (req, res) => {
   })
 
   const result = await nodeFetch(
-    // "/food/sazaezamasu"
-    "http://localhost:3333/food/sazaezamasu"
+    "/food/sazaezamasu"
+    // "http://localhost:3333/food/sazaezamasu"
     ).then(data => data.json());
 
   res.set("content-type", "application/json").status(200).send(result);
@@ -124,8 +124,8 @@ app.post("/previousCook/:loginID", async (req, res) => {
   await knex("GF_previousCook").insert(body);
 
   const result = await nodeFetch(
-    // "/previousCook/sazaezamasu"
-    "http://localhost:3333/previousCook/sazaezamasu"
+    "/previousCook/sazaezamasu"
+    // "http://localhost:3333/previousCook/sazaezamasu"
   ).then((e) => e.json());
 
   res.set("content-type", "application/json").status(200).send(result);

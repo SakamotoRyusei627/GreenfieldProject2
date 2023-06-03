@@ -45,8 +45,8 @@ export default function Propose() {
                       });
                       console.log(result);
                       const fetchData = await fetch(
-                        // `/deleteFood/sazaezamasu`,
-                        `http://localhost:3333/deleteFood/sazaezamasu`,
+                        `/deleteFood/sazaezamasu`,
+                        // `http://localhost:3333/deleteFood/sazaezamasu`,
                         {
                           method: "DELETE",
                           headers: {
@@ -62,8 +62,8 @@ export default function Propose() {
                 console.log("ここでGPT詳細な作り方を聞く？");
                 console.log(elem);
                 const postData = await fetch(
-                  // `/previousCook/sazaezamasu`,
-                  `http://localhost:3333/previousCook/sazaezamasu`,
+                  `/previousCook/sazaezamasu`,
+                  // `http://localhost:3333/previousCook/sazaezamasu`,
                   {
                     method: "POST",
                     headers: {
