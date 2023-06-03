@@ -113,7 +113,7 @@ app.post("/previousCook/:loginID", async (req, res) => {
   console.log(req.body);
   const body = {
     "cooking-date": arrangeDate([new Date()], 0),
-    dishes: req.body.title,
+    dishes: req.body[0].title,
     "login-id_p": req.params.loginID,
   };
 
