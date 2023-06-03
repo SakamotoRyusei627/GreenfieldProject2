@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const port = process.env.PORT ||3333;
-const knex = require("./src/db/index");
+const knex = require("./db/index");
 
 const path = require('path');
 app.use(express.static('build'));
