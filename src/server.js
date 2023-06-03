@@ -110,6 +110,7 @@ app.post("/food/:loginID", async (req, res) => {
 });
 
 app.post("/previousCook/:loginID", async (req, res) => {
+  console.log(req.body);
   const body = {
     "cooking-date": arrangeDate([new Date()], 0),
     dishes: req.body.title,
