@@ -6,7 +6,7 @@ const knex = require("./db/index");
 // npm run migrate-latest && npm run seed-data && 
 
 // app.use(express.static('build'));
-app.use("/", express.static(__dirname + "/build"));
+app.use("/", express.static(__dirname + "../public"));
 
 const arrangeDate = (e, key) => {
   return (
