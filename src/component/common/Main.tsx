@@ -59,7 +59,7 @@ export const SetVariableArray = React.createContext<props>([
   {},
   () => {},
   null,
-  [],
+  () => {},
 ]);
 
 const Main = () => {
@@ -167,7 +167,7 @@ const Main = () => {
       setCookList(cookList);
     };
     getData();
-  }, [flag]);
+  }, [flag, buttonArray]);
 
   const foodNameRef = useRef<HTMLInputElement[]>([]);
   const registrationDate = useRef<HTMLInputElement[]>([]);
