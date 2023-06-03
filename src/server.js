@@ -104,7 +104,9 @@ app.post("/food/:loginID", async (req, res) => {
     food["food-name"] && await knex("GF_food").insert(food);
   })
 
-  res.set("content-type", "application/json").status(200).send(req.body);
+  const result = await fetch("/food/sazaezamasu").then(data => data.json())
+
+  res.set("content-type", "application/json").status(200).send(result);
 });
 
 app.post("/previousCook/:loginID", async (req, res) => {
