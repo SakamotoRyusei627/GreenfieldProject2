@@ -53,6 +53,17 @@ export default function Propose() {
                           body: JSON.stringify(result),
                         }
                       );
+                      const postData = await fetch(
+                        `/previousCook/sazaezamasu`,
+                        // `http://localhost:3333/previousCook/sazaezamasu`,
+                        {
+                          method: "POST",
+                          headers: {
+                            "Content-Type": "application/json",
+                          },
+                          body: JSON.stringify(elem),
+                        }
+                      );
                     }
                   },
                   { text: "戻る", flag: 5, func: () => {} },

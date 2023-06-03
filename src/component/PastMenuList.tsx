@@ -13,7 +13,7 @@ export default function PastMenuList({cookList}:props) {
     <div className="sect">
       {cookList.map((e, ind) => (
         <ul key={ind}>
-          <li >
+          <li>
             <div className="petti">{e["cooking-date"]}</div>
             {e["dishes"].map((E, IND) => (<li key={IND}>{"・"+E}</li>))}
           </li>

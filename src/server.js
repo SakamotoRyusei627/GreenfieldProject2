@@ -112,12 +112,14 @@ app.post("/food/:loginID", async (req, res) => {
 app.post("/previousCook/:loginID", async (req, res) => {
   const body = {
     "cooking-date": arrangeDate([new Date()], 0),
-    dishes: "ザマス--------",
-    "login-id_p": "sazaezamasu",
+    dishes: req.body.title,
+    "login-id_p": req.params.loginID,
   };
 
+
+
   // await knex("GF_previousCook").del().where(body);
-  // await knex("GF_previousCook").insert(body);
+  await knex("GF_previousCook").insert(body);
 
   const result = await fetch(
     "/previousCook/sazaezamasu"
