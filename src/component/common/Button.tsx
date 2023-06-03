@@ -19,6 +19,7 @@ const Button: React.FC<props> = ({ foodList, setFoodList, buyFood }) => {
     setMessage,
     resistFood,
     setResistFood,
+    formButtonRef
   ] = useContext(SetVariableArray);
 
   console.log(
@@ -74,7 +75,7 @@ const Button: React.FC<props> = ({ foodList, setFoodList, buyFood }) => {
                         ];
                         console.log("####datas#####");
 
-                        console.log(datas);
+                        console.log({datas});
 
                         const filterDatas = datas
                           .filter(
@@ -120,6 +121,7 @@ const Button: React.FC<props> = ({ foodList, setFoodList, buyFood }) => {
                       text: "登録",
                       flag: 1,
                       func: async () => {
+                        // console.log(formButtonRef.current.click());
                         console.log("このデータを送る", resistFood);
                         const fetchData = await fetch(
                           `http://localhost:3333/food/sazaezamasu`,
@@ -132,6 +134,11 @@ const Button: React.FC<props> = ({ foodList, setFoodList, buyFood }) => {
                           }
                         ).then((res) => res.json());
                         setFoodList(fetchData);
+                        setResistFood([
+                          { "quantity-unit": "個/本/玉" },
+                          { "quantity-unit": "個/本/玉" },
+                          { "quantity-unit": "個/本/玉" },
+                        ])
                       },
                     },
                     { text: "戻る", flag: 1, func: () => {} },
@@ -203,7 +210,7 @@ const Button: React.FC<props> = ({ foodList, setFoodList, buyFood }) => {
                     { text: "献立（案）", num: 5 },
                   ]);
                   setButtonArray([
-                    { text: "次へ", flag: 6, func: () => {} },
+                    // { text: "次へ", flag: 6, func: () => {} },
                     { text: "戻る", flag: 3, func: () => {} },
                   ]);
                   break;

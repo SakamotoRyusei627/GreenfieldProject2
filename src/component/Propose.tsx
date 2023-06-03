@@ -35,7 +35,25 @@ export default function Propose() {
               key={index}
               onClick={() => {
                 setButtonArray([
-                  { text: "次へ", flag: 1, func: () => {} },
+                  { text: "次へ", flag: 1, func: async () => {
+                      console.log(choice)
+                      const result = choice.map(food => {
+                        if(food["expiration-date"] === "-") food["expiration-date"] = null;
+                        return food;
+                      });
+                      console.log(result);
+                      const fetchData = await fetch(
+                        `http://localhost:3333/deleteFood/sazaezamasu`,
+                        {
+                          method: "DELETE",
+                          headers: {
+                            "Content-Type": "application/json",
+                          },
+                          body: JSON.stringify(result),
+                        }
+                      );
+                    }
+                  },
                   { text: "戻る", flag: 5, func: () => {} },
                 ]);
                 console.log("ここでGPT詳細な作り方を聞く？");

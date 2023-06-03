@@ -21,7 +21,7 @@ type props = [
   choice: {
     "food-name": string;
     "registration-date": string;
-    "expiration-date": string;
+    "expiration-date": string | null;
     quantity: string;
     "quantity-unit": string;
   }[],
@@ -42,7 +42,8 @@ type props = [
   setResistFood: any,
   // 追加
   selectMessage: any,
-  setSelectMessage: any
+  setSelectMessage: any,
+  formButtonRef: any
 ];
 
 export const SetVariableArray = React.createContext<props>([
@@ -56,6 +57,7 @@ export const SetVariableArray = React.createContext<props>([
   () => {},
   {},
   () => {},
+  null,
 ]);
 
 const Main = () => {
@@ -161,7 +163,7 @@ const Main = () => {
       setCookList(cookList);
     };
     getData();
-  }, []);
+  }, [flag]);
 
   const foodNameRef = useRef<HTMLInputElement[]>([]);
   const registrationDate = useRef<HTMLInputElement[]>([]);
@@ -177,6 +179,8 @@ const Main = () => {
     quantityUnit: quantityUnit.current?.map((ref) => ref?.value),
   };
 
+  const formButtonRef = useRef(null);
+
   return (
     <SetVariableArray.Provider
       value={[
@@ -191,6 +195,7 @@ const Main = () => {
         // 追加
         selectMessage,
         setSelectMessage,
+        formButtonRef,
       ]}
     >
       <ContentArea

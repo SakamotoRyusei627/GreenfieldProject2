@@ -21,6 +21,7 @@ app.use(express.json());
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   res.header("Access-Control-Allow-Headers", "Content-Type");
   next();
 });
@@ -87,9 +88,22 @@ app.post("/food/:loginID", async (req, res) => {
     "login-id_f": "sazaezamasu",
   };
 
-  await knex("GF_food").insert(body);
+  console.log(req.body.map(food => {
+    food["login-id_f"] = req.params.loginID
+    return food;
+  }));
 
-  res.set("content-type", "application/json").status(200).send(body);
+  req.body
+  .map(food => {
+    food["login-id_f"] = req.params.loginID
+    return food;
+  })
+  .forEach(async food => {
+    food["food-name"] &&
+    await knex("GF_food").insert(food);
+  })
+
+  res.set("content-type", "application/json").status(200).send(req.body);
 });
 
 app.post("/previousCook/:loginID", async (req, res) => {
@@ -100,7 +114,7 @@ app.post("/previousCook/:loginID", async (req, res) => {
   };
 
   // await knex("GF_previousCook").del().where(body);
-  await knex("GF_previousCook").insert(body);
+  // await knex("GF_previousCook").insert(body);
 
   const result = await fetch(
     "http://localhost:3333/previousCook/sazaezamasu"
@@ -108,6 +122,13 @@ app.post("/previousCook/:loginID", async (req, res) => {
 
   res.set("content-type", "application/json").status(200).send(result);
 });
+
+app.delete("/deleteFood/:loginID", async (req, res) => {
+  console.log(req.body);
+  req.body.forEach(async food => {
+    await knex("GF_food").del().where(food);
+  })
+})
 
 app.post("/Propose/", async (req, res) => {
   const countOfPeople = req.body.countOfPeople;

@@ -17,7 +17,7 @@ const ShoppingList: React.FC<props> = ({
   quantityUnit,
 }) => {
   const initialArray = [...Array(3)];
-  console.log(initialArray);
+  // console.log(initialArray);
   const [shopping, setShopping] = useState(initialArray);
   // const [shopping, setShopping] = useState([""])
   const [
@@ -29,8 +29,9 @@ const ShoppingList: React.FC<props> = ({
     setMessage,
     resistFood,
     setResistFood,
+    formButtonRef
   ] = useContext(SetVariableArray);
-  console.log(resistFood);
+  console.log({resistFood});
 
   return (
     <form className="content">
@@ -48,9 +49,10 @@ const ShoppingList: React.FC<props> = ({
               type="text"
               onChange={(e) => {
                 const food = [...resistFood];
-                food[ind]["food_name"] = e.target.value;
+                food[ind]["food-name"] = e.target.value;
                 setResistFood(food);
               }}
+              required
             />
             <input
               name="registration-date"
@@ -60,6 +62,7 @@ const ShoppingList: React.FC<props> = ({
                 food[ind]["registration-date"] = e.target.value;
                 setResistFood(food);
               }}
+              required
             />
             <input
               name="expiration-date"
@@ -79,6 +82,7 @@ const ShoppingList: React.FC<props> = ({
                 food[ind]["quantity"] = e.target.value;
                 setResistFood(food);
               }}
+              required
             />
             <select
               name="quantity-unit"
@@ -100,6 +104,7 @@ const ShoppingList: React.FC<props> = ({
         className="addRow"
         onClick={() => {
           setShopping([...shopping, ""]);
+          setResistFood([...resistFood, { "quantity-unit": "個/本/玉" }]);
           // ダミー
           const data = document.querySelectorAll(".formData");
           console.log(data[0]);
@@ -107,6 +112,7 @@ const ShoppingList: React.FC<props> = ({
       >
         ➕
       </div>
+      {/* <input type="submit" ref={formButtonRef} onClick={() => {console.log("クリック")}}></input> */}
     </form>
   );
 };
