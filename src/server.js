@@ -3,7 +3,7 @@ const app = express();
 const port = 3333;
 const knex = require("./db/index");
 
-const fetch = require('node-fetch');
+// const fetch = require('node-fetch');
 
 // app.use(express.static('public'));
 app.use(express.static('build'));
