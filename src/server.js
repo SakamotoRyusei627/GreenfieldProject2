@@ -5,8 +5,8 @@ const knex = require("./db/index");
 
 // npm run migrate-latest && npm run seed-data && 
 
-app.use(express.static('build'));
-// app.use("/", express.static(__dirname + "/public"));
+// app.use(express.static('build'));
+app.use("/", express.static(__dirname + "/build"));
 
 const arrangeDate = (e, key) => {
   return (
@@ -79,15 +79,15 @@ app.get("/previousCook/:loginID", async (req, res) => {
 });
 
 app.post("/food/:loginID", async (req, res) => {
-  const body = {
-    // id: 25,
-    "food-name": "マンゴー",
-    quantity: 1,
-    "quantity-unit": "個",
-    "registration-date": "2023-6-2",
-    "expiration-date": "2023-6-13",
-    "login-id_f": "sazaezamasu",
-  };
+  // const body = {
+  //   // id: 25,
+  //   "food-name": "マンゴー",
+  //   quantity: 1,
+  //   "quantity-unit": "個",
+  //   "registration-date": "2023-6-2",
+  //   "expiration-date": "2023-6-13",
+  //   "login-id_f": "sazaezamasu",
+  // };
 
   console.log(req.body.map(food => {
     food["login-id_f"] = req.params.loginID
@@ -100,8 +100,7 @@ app.post("/food/:loginID", async (req, res) => {
     return food;
   })
   .forEach(async food => {
-    food["food-name"] &&
-    await knex("GF_food").insert(food);
+    food["food-name"] && await knex("GF_food").insert(food);
   })
 
   res.set("content-type", "application/json").status(200).send(req.body);
@@ -118,8 +117,8 @@ app.post("/previousCook/:loginID", async (req, res) => {
   // await knex("GF_previousCook").insert(body);
 
   const result = await fetch(
-    "/previousCook/sazaezamasu"
-    // "http://localhost:3333/previousCook/sazaezamasu"
+    // "/previousCook/sazaezamasu"
+    "http://localhost:3333/previousCook/sazaezamasu"
   ).then((e) => e.json());
 
   res.set("content-type", "application/json").status(200).send(result);
@@ -127,7 +126,7 @@ app.post("/previousCook/:loginID", async (req, res) => {
 
 app.delete("/deleteFood/:loginID", async (req, res) => {
   console.log(req.body);
-  req.body.forEach(async food => {
+  await req.body.forEach(async food => {
     await knex("GF_food").del().where(food);
   })
 })

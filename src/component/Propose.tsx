@@ -43,8 +43,8 @@ export default function Propose() {
                       });
                       console.log(result);
                       const fetchData = await fetch(
-                        `/deleteFood/sazaezamasu`,
-                        // `http://localhost:3333/deleteFood/sazaezamasu`,
+                        // `/deleteFood/sazaezamasu`,
+                        `http://localhost:3333/deleteFood/sazaezamasu`,
                         {
                           method: "DELETE",
                           headers: {
