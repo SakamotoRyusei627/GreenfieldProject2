@@ -154,7 +154,7 @@ const Main = () => {
   useEffect(() => {
     const getData = async () => {
       const foodList = await fetch(
-        "http://localhost:3333/food/sazaezamasu"
+        "https://vermouth.onrender.com/food/sazaezamasu"
       ).then((e) => e.json());
       setFoodList(foodList);
       const cookList = await fetch(
