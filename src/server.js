@@ -3,7 +3,7 @@ const app = express();
 const port = 3333;
 const knex = require("./db/index");
 
-// const fetch = require('node-fetch');
+const nodeFetch = require("node-fetch");
 
 // app.use(express.static('public'));
 app.use(express.static('build'));
@@ -104,7 +104,7 @@ app.post("/food/:loginID", async (req, res) => {
     food["food-name"] && await knex("GF_food").insert(food);
   })
 
-  const result = await fetch("/food/sazaezamasu").then(data => data.json())
+  const result = await nodeFetch("/food/sazaezamasu").then(data => data.json())
 
   res.set("content-type", "application/json").status(200).send(result);
 });
@@ -116,12 +116,10 @@ app.post("/previousCook/:loginID", async (req, res) => {
     "login-id_p": req.params.loginID,
   };
 
-
-
   // await knex("GF_previousCook").del().where(body);
   await knex("GF_previousCook").insert(body);
 
-  const result = await fetch(
+  const result = await nodeFetch(
     "/previousCook/sazaezamasu"
     // "http://localhost:3333/previousCook/sazaezamasu"
   ).then((e) => e.json());
