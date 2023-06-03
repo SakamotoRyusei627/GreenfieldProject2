@@ -1,9 +1,10 @@
 const express = require("express");
 const app = express();
-const port = process.env.PORT || 3333;
+const port = 3333;
 const knex = require("./db/index");
 
-app.use(express.static('build'));
+// app.use(express.static('build'));
+app.use("/", express.static(__dirname + "/public"));
 
 const arrangeDate = (e, key) => {
   return (
