@@ -127,7 +127,8 @@ const Button: React.FC<props> = ({ foodList, setFoodList, buyFood }) => {
                         // console.log(formButtonRef.current.click());
                         console.log("このデータを送る", resistFood);
                         const fetchData = await fetch(
-                          `http://localhost:3333/food/sazaezamasu`,
+                          `/food/sazaezamasu`,
+                          // `http://localhost:3333/food/sazaezamasu`,
                           {
                             method: "POST",
                             headers: {
@@ -173,7 +174,8 @@ const Button: React.FC<props> = ({ foodList, setFoodList, buyFood }) => {
                           arrFoods: result,
                         };
                         const fetchData = await fetch(
-                          `http://localhost:3333/propose`,
+                          `/propose`,
+                          // `http://localhost:3333/propose`,
                           {
                             method: "POST",
                             headers: {
