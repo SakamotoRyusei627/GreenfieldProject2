@@ -124,8 +124,8 @@ const Button: React.FC<props> = ({ foodList, setFoodList, buyFood }) => {
                         // console.log(formButtonRef.current.click());
                         console.log("このデータを送る", resistFood);
                         const fetchData = await fetch(
-                          `/food/sazaezamasu`,
-                          // `http://localhost:3333/food/sazaezamasu`,
+                          // `/food/sazaezamasu`,
+                          `http://localhost:3333/food/sazaezamasu`,
                           {
                             method: "POST",
                             headers: {
@@ -171,8 +171,8 @@ const Button: React.FC<props> = ({ foodList, setFoodList, buyFood }) => {
                           arrFoods: result,
                         };
                         const fetchData = await fetch(
-                          `/propose`,
-                          // `http://localhost:3333/propose`,
+                          // `/propose`,
+                          `http://localhost:3333/propose`,
                           {
                             method: "POST",
                             headers: {
@@ -212,7 +212,7 @@ const Button: React.FC<props> = ({ foodList, setFoodList, buyFood }) => {
                     { text: "献立（案）", num: 5 },
                   ]);
                   setButtonArray([
-                    // { text: "次へ", flag: 6, func: () => {} },
+                    // { text: "次へ", flag: 6, func: () => {console.log("azaaaaaaaaaaaaaaaaaaaaaaaaaaaa");} },
                     { text: "戻る", flag: 3, func: () => {} },
                   ]);
                   break;
@@ -229,7 +229,8 @@ const Button: React.FC<props> = ({ foodList, setFoodList, buyFood }) => {
                     { text: "献立", num: 6 },
                   ]);
                   setButtonArray([
-                    { text: "次へ", flag: 1, func: () => {} },
+                    { text: "次へ", flag: 1, func: () => {console.log("azaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                    } },
                     { text: "戻る", flag: 5, func: () => {} },
                   ]);
                   break;

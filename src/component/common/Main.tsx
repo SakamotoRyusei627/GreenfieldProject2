@@ -156,18 +156,18 @@ const Main = () => {
   useEffect(() => {
     const getData = async () => {
       const foodList = await fetch(
-        "/food/sazaezamasu"
-        // "http://localhost:3333/food/sazaezamasu"
+        // "/food/sazaezamasu"
+        "http://localhost:3333/food/sazaezamasu"
       ).then((e) => e.json());
       setFoodList(foodList);
       const cookList = await fetch(
-        "/previousCook/sazaezamasu"
-        // "http://localhost:3333/previousCook/sazaezamasu"
+        // "/previousCook/sazaezamasu"
+        "http://localhost:3333/previousCook/sazaezamasu"
       ).then((e) => e.json());
       setCookList(cookList);
     };
     getData();
-  }, [flag, buttonArray]);
+  }, [flag]);
 
   const foodNameRef = useRef<HTMLInputElement[]>([]);
   const registrationDate = useRef<HTMLInputElement[]>([]);

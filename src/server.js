@@ -104,7 +104,10 @@ app.post("/food/:loginID", async (req, res) => {
     food["food-name"] && await knex("GF_food").insert(food);
   })
 
-  const result = await nodeFetch("/food/sazaezamasu").then(data => data.json())
+  const result = await nodeFetch(
+    // "/food/sazaezamasu"
+    "http://localhost:3333/food/sazaezamasu"
+    ).then(data => data.json());
 
   res.set("content-type", "application/json").status(200).send(result);
 });
@@ -113,7 +116,7 @@ app.post("/previousCook/:loginID", async (req, res) => {
   console.log(req.body);
   const body = {
     "cooking-date": arrangeDate([new Date()], 0),
-    dishes: req.body[0].title,
+    dishes: req.body.title,
     "login-id_p": req.params.loginID,
   };
 
@@ -121,8 +124,8 @@ app.post("/previousCook/:loginID", async (req, res) => {
   await knex("GF_previousCook").insert(body);
 
   const result = await nodeFetch(
-    "/previousCook/sazaezamasu"
-    // "http://localhost:3333/previousCook/sazaezamasu"
+    // "/previousCook/sazaezamasu"
+    "http://localhost:3333/previousCook/sazaezamasu"
   ).then((e) => e.json());
 
   res.set("content-type", "application/json").status(200).send(result);
