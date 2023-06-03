@@ -132,7 +132,7 @@ app.delete("/deleteFood/:loginID", async (req, res) => {
   })
 })
 
-app.post("/Propose/", async (req, res) => {
+app.post("/propose/", async (req, res) => {
   const countOfPeople = req.body.countOfPeople;
   console.log("countOfPeople", countOfPeople);
   const arrFoods = req.body.arrFoods;
