@@ -7,7 +7,7 @@ exports.seed = async function (knex) {
   await knex("GF_food").del();
   await knex("GF_food").insert([
     {
-      id: 1,
+      // id: 1,
       "food-name": "豆乳",
       quantity: 3,
       "quantity-unit": "L",
@@ -16,7 +16,7 @@ exports.seed = async function (knex) {
       "login-id_f": "sazaezamasu",
     },
     {
-      id: 2,
+      // id: 2,
       "food-name": "豆腐",
       quantity: 2,
       "quantity-unit": "個/本/玉",
@@ -24,7 +24,7 @@ exports.seed = async function (knex) {
       "login-id_f": "sazaezamasu",
     },
     {
-      id: 3,
+      // id: 3,
       "food-name": "大豆",
       quantity: 240.27,
       "quantity-unit": "Kg",
@@ -33,7 +33,7 @@ exports.seed = async function (knex) {
       "login-id_f": "sazaezamasu",
     },
     {
-      id: 4,
+      // id: 4,
       "food-name": "焼きそば",
       quantity: 2.4,
       "quantity-unit": "パック/袋/缶",
@@ -42,7 +42,7 @@ exports.seed = async function (knex) {
       "login-id_f": "sazaezamasu",
     },
     {
-      id: 5,
+      // id: 5,
       "food-name": "りんご",
       quantity: 3,
       "quantity-unit": "個/本/玉",
@@ -51,7 +51,7 @@ exports.seed = async function (knex) {
       "login-id_f": "sazaezamasu",
     },
     {
-      id: 6,
+      // id: 6,
       "food-name": "りんご",
       quantity: 3,
       "quantity-unit": "個/本/玉",
@@ -60,7 +60,7 @@ exports.seed = async function (knex) {
       "login-id_f": "sazaezamasu",
     },
     {
-      id: 7,
+      // id: 7,
       "food-name": "じゃがいも",
       quantity: 6,
       "quantity-unit": "個/本/玉",
@@ -69,7 +69,7 @@ exports.seed = async function (knex) {
       "login-id_f": "sazaezamasu",
     },
     {
-      id: 8,
+      // id: 8,
       "food-name": "サンマ",
       quantity: 8,
       "quantity-unit": "個/本/玉",
@@ -78,7 +78,7 @@ exports.seed = async function (knex) {
       "login-id_f": "sazaezamasu",
     },
     {
-      id: 9,
+      // id: 9,
       "food-name": "米",
       quantity: 8790.23,
       "quantity-unit": "Kg",
@@ -86,7 +86,7 @@ exports.seed = async function (knex) {
       "login-id_f": "sazaezamasu",
     },
     {
-      id: 10,
+      // id: 10,
       "food-name": "鶏ムネ肉",
       quantity: 2,
       "quantity-unit": "Kg",
@@ -95,7 +95,7 @@ exports.seed = async function (knex) {
       "login-id_f": "sazaezamasu",
     },
     {
-      id: 11,
+      // id: 11,
       "food-name": "キャビア",
       "quantity": 100,
       "quantity-unit": "パック/袋/缶",
@@ -104,7 +104,7 @@ exports.seed = async function (knex) {
       "login-id_f": "sazaezamasu",
     },
     {
-      id: 12,
+      // id: 12,
       "food-name": "フォアグラ",
       "quantity": 50,
       "quantity-unit": "パック/袋/缶",
@@ -113,7 +113,7 @@ exports.seed = async function (knex) {
       "login-id_f": "sazaezamasu",
     },
     {
-      id: 13,
+      // id: 13,
       "food-name": "トリュフ",
       "quantity": 900,
       "quantity-unit": "個/本/玉",
@@ -122,7 +122,7 @@ exports.seed = async function (knex) {
       "login-id_f": "sazaezamasu",
     },
     {
-      id: 14,
+      // id: 14,
       "food-name": "高麗人参",
       "quantity": 3,
       "quantity-unit": "個/本/玉",
@@ -131,7 +131,7 @@ exports.seed = async function (knex) {
       "login-id_f": "sazaezamasu",
     },
     {
-      id: 15,
+      // id: 15,
       "food-name": "豆腐",
       "quantity": 3,
       "quantity-unit": "パック/袋/缶",
@@ -140,7 +140,7 @@ exports.seed = async function (knex) {
       "login-id_f": "sazaezamasu",
     },
     {
-      id: 16,
+      // id: 16,
       "food-name": "豆腐",
       "quantity": 3,
       "quantity-unit": "L",
@@ -149,7 +149,7 @@ exports.seed = async function (knex) {
       "login-id_f": "sazaezamasu",
     },
     {
-      id: 17,
+      // id: 17,
       "food-name": "牛肉",
       "quantity": 4,
       "quantity-unit": "パック/袋/缶",
@@ -158,7 +158,7 @@ exports.seed = async function (knex) {
       "login-id_f": "sazaezamasu",
     },
     {
-      id: 18,
+      // id: 18,
       "food-name": "豚肉",
       "quantity": 0.5,
       "quantity-unit": "パック/袋/缶",
@@ -167,7 +167,7 @@ exports.seed = async function (knex) {
       "login-id_f": "sazaezamasu",
     },
     {
-      id: 19,
+      // id: 19,
       "food-name": "玄米",
       "quantity": 3000,
       "quantity-unit": "Kg",
@@ -175,7 +175,7 @@ exports.seed = async function (knex) {
       "login-id_f": "sazaezamasu",
     },
     {
-      id: 20,
+      // id: 20,
       "food-name": "豆板醤",
       "quantity": 90000,
       "quantity-unit": "Kg",
@@ -183,7 +183,7 @@ exports.seed = async function (knex) {
       "login-id_f": "sazaezamasu",
     },
     {
-      id: 21,
+      // id: 21,
       "food-name": "湯葉",
       "quantity": 3,
       "quantity-unit": "パック/袋/缶",
@@ -192,7 +192,7 @@ exports.seed = async function (knex) {
       "login-id_f": "sazaezamasu",
     },
     {
-      id: 22,
+      // id: 22,
       "food-name": "サバ缶",
       "quantity": 3,
       "quantity-unit": "パック/袋/缶",
@@ -201,7 +201,7 @@ exports.seed = async function (knex) {
       "login-id_f": "sazaezamasu",
     },
     {
-      id: 23,
+      // id: 23,
       "food-name": "牛乳",
       "quantity": 3,
       "quantity-unit": "L",
