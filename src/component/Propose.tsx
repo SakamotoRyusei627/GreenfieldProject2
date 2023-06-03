@@ -36,7 +36,7 @@ export default function Propose() {
               key={index}
               onClick={async () => {
                 setButtonArray([
-                  { text: "s", flag: 1, func: async () => {
+                  { text: "次へ", flag: 1, func: async () => {
                       console.log("choice", choice);
                       
                       const result = choice.map(food => {
