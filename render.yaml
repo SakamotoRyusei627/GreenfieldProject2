@@ -1,5 +1,6 @@
 services:
   - name: react-app
-    startCommand: npm install react-scripts &&　npm start
+    buildCommand: npm install && npm install react-scripts && npm run build
+    startCommand: npm start
   - name: server
     startCommand: node server.js
