@@ -154,11 +154,13 @@ const Main = () => {
   useEffect(() => {
     const getData = async () => {
       const foodList = await fetch(
-        "http://localhost:3333/food/sazaezamasu"
+        "/food/sazaezamasu"
+        // "http://localhost:3333/food/sazaezamasu"
       ).then((e) => e.json());
       setFoodList(foodList);
       const cookList = await fetch(
-        "http://localhost:3333/previousCook/sazaezamasu"
+        "/previousCook/sazaezamasu"
+        // "http://localhost:3333/previousCook/sazaezamasu"
       ).then((e) => e.json());
       setCookList(cookList);
     };
