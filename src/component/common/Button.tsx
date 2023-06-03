@@ -28,6 +28,9 @@ const Button: React.FC<props> = ({ foodList, setFoodList, buyFood }) => {
     choice[0]["food-name"]
   );
 
+  console.log(process.env.PORT);
+  
+
   return (
     <div className="buttonArea">
       {buttonArray.map((e: any, index: any) => {
