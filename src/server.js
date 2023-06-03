@@ -118,8 +118,8 @@ app.post("/previousCook/:loginID", async (req, res) => {
   // await knex("GF_previousCook").insert(body);
 
   const result = await fetch(
-    // "/previousCook/sazaezamasu"
-    "http://localhost:3333/previousCook/sazaezamasu"
+    "/previousCook/sazaezamasu"
+    // "http://localhost:3333/previousCook/sazaezamasu"
   ).then((e) => e.json());
 
   res.set("content-type", "application/json").status(200).send(result);
