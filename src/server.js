@@ -275,6 +275,6 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-app.listen(process.env.PORT || port, () => {
+app.listen(3333, () => {
   console.log(`server started @:${port}`);
 });
