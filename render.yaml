@@ -1,0 +1,5 @@
+services:
+  - name: react-app
+    startCommand: npm start
+  - name: server
+    startCommand: node server.js
