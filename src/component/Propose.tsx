@@ -65,7 +65,8 @@ export default function Propose() {
                           body: JSON.stringify(elem),
                         }
                       );
-                      setCookList(postData);
+                      console.log(postData);
+                      await setCookList(postData);
                     }
                   },
                   { text: "戻る", flag: 5, func: () => {} },
