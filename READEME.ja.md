@@ -1,7 +1,10 @@
+
 ![GitHub repo size](https://img.shields.io/github/repo-size/SakamotoRyusei627/GreenfieldProject2)
 ![GitHub last commit](https://img.shields.io/github/last-commit/SakamotoRyusei627/GreenfieldProject2)
 ![GitHub top language](https://img.shields.io/github/languages/top/SakamotoRyusei627/GreenfieldProject2)
-![GitHub language count](https://img.shields.io/github/languages/count/SakamotoRyusei627/GreenfieldProject2)
+![GitHub language count](https://img.shields.io/github/languages/count/SakamotoRyusei627/GreenfieldProject2)　　　
+***
+
 <img src="https://img.shields.io/badge/-Javascript-F7DF1E.svg?logo=javascript&style=plastic">
 <img src="https://img.shields.io/badge/-Typescript-007ACC.svg?logo=typescript&style=plastic">
 <img src="https://img.shields.io/badge/-Css3-1572B6.svg?logo=css3&style=plastic">
@@ -12,7 +15,8 @@
 <img src="https://img.shields.io/badge/-Slack-4A154B.svg?logo=slack&style=plastic">
 <img src="https://img.shields.io/badge/-Node.js-339933.svg?logo=node.js&style=plastic">
 <img src="https://img.shields.io/badge/-Nodemon-76D04B.svg?logo=nodemon&style=plastic">
-<img src="https://img.shields.io/badge/-Npm-CB3837.svg?logo=npm&style=plastic">
+<img src="https://img.shields.io/badge/-Npm-CB3837.svg?logo=npm&style=plastic"><br>
+***
 
 # Create React App を使用したはじめ方
 
