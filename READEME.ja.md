@@ -20,7 +20,9 @@
 </div> 
 <hr>
 
-# Create React App を使用したはじめ方
+# 【初期設定】
+
+## Create React App を使用したはじめ方
 
 このプロジェクトは、[Create React App](https://github.com/facebook/create-react-app)を使用して作成されました。
 
