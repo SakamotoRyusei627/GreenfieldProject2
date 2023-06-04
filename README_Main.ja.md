@@ -1,7 +1,5 @@
 ![](img/2023-06-05-01-40-06.png)
 
-# 【 GPTCooker🥘 ザマス について】
-
 ### 【Git 情報】
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/SakamotoRyusei627/GreenfieldProject2)
@@ -11,9 +9,10 @@
 
 ---
 
-### 【使用アイテム】
+### 【使用システム】
 
 <div>
+<img src="https://img.shields.io/badge/-Git-F05032.svg?logo=git&style=plastic">
 <img src="https://img.shields.io/badge/-Javascript-F7DF1E.svg?logo=javascript&style=plastic">
 <img src="https://img.shields.io/badge/-Typescript-007ACC.svg?logo=typescript&style=plastic">
 <img src="https://img.shields.io/badge/-Css3-1572B6.svg?logo=css3&style=plastic">
@@ -35,16 +34,16 @@
 
 ### 🥘 背景
 
-下記内容からこのシステムを作成するプロジェクトが開始しました。
+　🚩下記内容からこのシステムを作成するプロジェクトが開始しました。
 
 - **【困りごと】** 毎日、「メニューを考えるのが大変」でこんな困りごとありませんか？
   - 限られた材料で作らないといけない
   - 被らない料理を作らないといけない
 - **【欲しいシステム】** 簡単＆かぶらない献立提案・食材管理（ムダにしない）
 
-**_使用 URL_**
+### 🥘 使用 URL（デプロイ先）
 
-実際のシステム[「GPTCooker🥘 ザマス」](https://vermouth.onrender.com/)はこちらになります。
+- 実際のシステム[「GPTCooker🥘 ザマス」](https://vermouth.onrender.com/)はこちらになります。
 
 ## 🥘 機能
 
@@ -58,16 +57,16 @@
 ※<font color="Red">赤文字部</font>：作成済　　<font color="blue">青文字部</font>：未作成
 ![](img/2023-06-05-01-51-15.png)
 
-## プログラム構成
+## 🥘 プログラム構成
 
 ※<font color="Red">赤文字部</font>：作成済　　<font color="blue">青文字部</font>：未作成
 ![](img/2023-06-05-01-58-50.png)
 
-## スキーマ
+## 🥘 スキーマ
 
 ![](img/2023-06-05-01-57-31.png)
 
-## 使用環境
+## 🥘 使用環境
 
 - macOS
 - node.js
