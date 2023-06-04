@@ -130,8 +130,9 @@ const Button: React.FC<props> = ({ foodList, setFoodList, buyFood }) => {
                             },
                             body: JSON.stringify(resistFood),
                           }
-                        ).then((res) => res.json());
-                        setFoodList(fetchData);
+                        );
+                        const result = await fetchData.json();
+                        setFoodList(result);
                       },
                     },
                     { text: "戻る", flag: 1, func: () => {} },

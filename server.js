@@ -77,6 +77,9 @@ app.get("/previousCook/:loginID", async (req, res) => {
 });
 
 app.post("/food/:loginID", async (req, res) => {
+  console.log("/food/:loginID");
+
+  // console.log(req.body);
   const body = {
     // id: 25,
     "food-name": "マンゴー",
@@ -89,10 +92,13 @@ app.post("/food/:loginID", async (req, res) => {
 
   await knex("GF_food").insert(body);
 
-  res.set("content-type", "application/json").status(200).send(body);
+  res.set("content-type", "application/json").status(200).json(body);
 });
 
 app.post("/previousCook/:loginID", async (req, res) => {
+  console.log("/previousCook/:loginID");
+  console.log(req.body);
+
   const body = {
     "cooking-date": arrangeDate([new Date()], 0),
     dishes: "ザマス--------",
