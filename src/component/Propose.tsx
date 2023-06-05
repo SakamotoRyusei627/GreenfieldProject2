@@ -29,6 +29,7 @@ export default function Propose() {
   return (
     <>
       <h1>Propose</h1>
+      <img src={`./images/loding.svg`} alt="アイコンtrue" />
       <ul>
         {message.map((elem, index) => {
           return (
