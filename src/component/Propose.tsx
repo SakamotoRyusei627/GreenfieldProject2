@@ -61,6 +61,8 @@ export default function Propose() {
                 ]);
                 console.log("ここでGPT詳細な作り方を聞く？");
                 console.log(elem);
+                setSelectMessage(elem);
+                setFlag(6);
                 const postData = await fetch(
                   `/previousCook/sazaezamasu`,
                   // `http://localhost:3333/previousCook/sazaezamasu`,
@@ -74,8 +76,6 @@ export default function Propose() {
                 ).then(data => data.json());
                 console.log(postData);
                 console.log("それか相談のタイミングのやつを使う");
-                setSelectMessage(elem);
-                setFlag(6);
               }}
             >
               {elem.title}
