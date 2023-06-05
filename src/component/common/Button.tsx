@@ -19,14 +19,14 @@ const Button: React.FC<props> = ({ foodList, setFoodList, buyFood }) => {
     setMessage,
     resistFood,
     setResistFood,
-    formButtonRef
+    formButtonRef,
   ] = useContext(SetVariableArray);
 
   console.log(
     "%c########Button関数コンポーネント内",
     "color:#008000",
     choice[0]["food-name"]
-  );  
+  );
 
   return (
     <div className="buttonArea">
@@ -75,7 +75,7 @@ const Button: React.FC<props> = ({ foodList, setFoodList, buyFood }) => {
                         ];
                         console.log("####datas#####");
 
-                        console.log({datas});
+                        console.log({ datas });
 
                         const filterDatas = datas
                           .filter(
@@ -101,6 +101,7 @@ const Button: React.FC<props> = ({ foodList, setFoodList, buyFood }) => {
                         console.log({ filterDatas });
 
                         setChoice(filterDatas);
+                        return filterDatas;
                       },
                     },
                     { text: "先週の献立", flag: 4, func: () => {} },
@@ -124,8 +125,8 @@ const Button: React.FC<props> = ({ foodList, setFoodList, buyFood }) => {
                         // console.log(formButtonRef.current.click());
                         console.log("このデータを送る", resistFood);
                         const fetchData = await fetch(
-                          `/food/sazaezamasu`,
-                          // `http://localhost:3333/food/sazaezamasu`,
+                          // `/food/sazaezamasu`,
+                          `http://localhost:3333/food/sazaezamasu`,
                           {
                             method: "POST",
                             headers: {
@@ -139,7 +140,7 @@ const Button: React.FC<props> = ({ foodList, setFoodList, buyFood }) => {
                           { "quantity-unit": "個/本/玉" },
                           { "quantity-unit": "個/本/玉" },
                           { "quantity-unit": "個/本/玉" },
-                        ])
+                        ]);
                       },
                     },
                     { text: "戻る", flag: 1, func: () => {} },
@@ -171,8 +172,8 @@ const Button: React.FC<props> = ({ foodList, setFoodList, buyFood }) => {
                           arrFoods: result,
                         };
                         const fetchData = await fetch(
-                          `/propose`,
-                          // `http://localhost:3333/propose`,
+                          // `/propose`,
+                          `http://localhost:3333/propose`,
                           {
                             method: "POST",
                             headers: {
@@ -229,8 +230,13 @@ const Button: React.FC<props> = ({ foodList, setFoodList, buyFood }) => {
                     { text: "献立", num: 6 },
                   ]);
                   setButtonArray([
-                    { text: "次へ", flag: 1, func: () => {console.log("azaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-                    } },
+                    {
+                      text: "次へ",
+                      flag: 1,
+                      func: () => {
+                        console.log("azaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                      },
+                    },
                     { text: "戻る", flag: 5, func: () => {} },
                   ]);
                   break;

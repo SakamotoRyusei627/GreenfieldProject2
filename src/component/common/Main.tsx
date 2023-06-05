@@ -44,7 +44,7 @@ type props = [
   selectMessage: any,
   setSelectMessage: any,
   formButtonRef: any,
-  setCookList: any,
+  setCookList: any
 ];
 
 export const SetVariableArray = React.createContext<props>([
@@ -149,18 +149,22 @@ const Main = () => {
     console.log("selectMessageが変わったよ");
   }, [selectMessage]);
 
+  useEffect(() => {
+    console.log("Messageが変わったよ");
+  }, [message]);
+
   const [flag, , , pageList] = useContext(FlagContext);
 
   useEffect(() => {
     const getData = async () => {
       const foodList = await fetch(
-        "/food/sazaezamasu"
-        // "http://localhost:3333/food/sazaezamasu"
+        // "/food/sazaezamasu"
+        "http://localhost:3333/food/sazaezamasu"
       ).then((e) => e.json());
       setFoodList(foodList);
       const cookList = await fetch(
-        "/previousCook/sazaezamasu"
-        // "http://localhost:3333/previousCook/sazaezamasu"
+        // "/previousCook/sazaezamasu"
+        "http://localhost:3333/previousCook/sazaezamasu"
       ).then((e) => e.json());
       setCookList(cookList);
     };
@@ -198,7 +202,7 @@ const Main = () => {
         selectMessage,
         setSelectMessage,
         formButtonRef,
-        setCookList
+        setCookList,
       ]}
     >
       <ContentArea

@@ -6,7 +6,7 @@ const knex = require("./db/index");
 const nodeFetch = require("node-fetch");
 
 // app.use(express.static('public'));
-app.use(express.static('build'));
+app.use(express.static("build"));
 // app.use("/", express.static(__dirname + "/public"));
 
 const arrangeDate = (e, key) => {
@@ -23,7 +23,7 @@ app.use(express.json());
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   res.header("Access-Control-Allow-Headers", "Content-Type");
   next();
 });
@@ -90,24 +90,26 @@ app.post("/food/:loginID", async (req, res) => {
   //   "login-id_f": "sazaezamasu",
   // };
 
-  console.log(req.body.map(food => {
-    food["login-id_f"] = req.params.loginID
-    return food;
-  }));
+  console.log(
+    req.body.map((food) => {
+      food["login-id_f"] = req.params.loginID;
+      return food;
+    })
+  );
 
   await req.body
-  .map(food => {
-    food["login-id_f"] = req.params.loginID
-    return food;
-  })
-  .forEach(async food => {
-    food["food-name"] && await knex("GF_food").insert(food);
-  })
+    .map((food) => {
+      food["login-id_f"] = req.params.loginID;
+      return food;
+    })
+    .forEach(async (food) => {
+      food["food-name"] && (await knex("GF_food").insert(food));
+    });
 
   const result = await nodeFetch(
-    "/food/sazaezamasu"
-    // "http://localhost:3333/food/sazaezamasu"
-    ).then(data => data.json());
+    // "/food/sazaezamasu"
+    "http://localhost:3333/food/sazaezamasu"
+  ).then((data) => data.json());
 
   res.set("content-type", "application/json").status(200).send(result);
 });
@@ -124,8 +126,8 @@ app.post("/previousCook/:loginID", async (req, res) => {
   await knex("GF_previousCook").insert(body);
 
   const result = await nodeFetch(
-    "/previousCook/sazaezamasu"
-    // "http://localhost:3333/previousCook/sazaezamasu"
+    // "/previousCook/sazaezamasu"
+    "http://localhost:3333/previousCook/sazaezamasu"
   ).then((e) => e.json());
 
   res.set("content-type", "application/json").status(200).send(result);
@@ -133,10 +135,10 @@ app.post("/previousCook/:loginID", async (req, res) => {
 
 app.delete("/deleteFood/:loginID", async (req, res) => {
   console.log(req.body);
-  await req.body.forEach(async food => {
+  await req.body.forEach(async (food) => {
     await knex("GF_food").del().where(food);
-  })
-})
+  });
+});
 
 app.post("/propose/", async (req, res) => {
   const countOfPeople = req.body.countOfPeople;
@@ -144,7 +146,7 @@ app.post("/propose/", async (req, res) => {
   const arrFoods = req.body.arrFoods;
   console.log("arrFoods", arrFoods);
   //1=>GPT起動,2=>GPT停止
-  const set = 2;
+  const set = 1;
   switch (set) {
     case 1:
       console.log("GPT起動");
@@ -180,11 +182,8 @@ app.post("/propose/", async (req, res) => {
                 content: `あなたは、ザマス口調の優秀なシェフです。
             # 制約条件 #
             ・${strJoinFoods}で${countOfPeople}人分の献立のレシピを３つ
-            ・{title,material,list}
-            ・title:料理名
-            ・material:材料
-            ・list:手順
-            ・上記オブジェクトを配列形式で格納
+            ・JavaScript使用できるJson形式で回答。{title,material,list}
+            ・上記{title,material,list}を配列[]内に格納
             `,
               },
             ],
@@ -192,13 +191,15 @@ app.post("/propose/", async (req, res) => {
           return completion.data.choices[0].message;
         })();
         fetchResult.then((result) => {
-          console.log(result.content);
+          console.log(result);
           res.set("content-type", "application/json");
           res.status(200);
           res.send(result.content);
           // res.send(JSON.stringify(result.content));
         });
       } catch (e) {
+        // console.error(e);
+        console.error(e.data);
         console.log("エラー");
       }
       break;
@@ -270,6 +271,26 @@ app.post("/propose/", async (req, res) => {
           ],
         },
       ];
+      // const body = ["「俺様シェフが教える、絶品献立だ！",
+      // recipes = [
+      //   {
+      //     title: "じゃがいもと鶏肉のカレー",
+      //     material: ["じゃがいも6個", "鶏ムネ肉2Kg", "カレー粉", "玉ねぎ"],
+      //     list: ["1. 玉ねぎをみじん切りにする", "2. 鍋に油を熱し、玉ねぎを炒める", "3. 鶏肉を加えて焼き色がつくまで炒める", "4. じゃがいもを加え、水を加えて中火で煮込む", "5. カレー粉を加えて味を整える"]
+      //   },
+      //   {
+      //     title: "ポテトサラダと鶏肉のグリル",
+      //     material: ["じゃがいも6個", "鶏ムネ肉2Kg", "マヨネーズ", "きゅうり", "トマト"],
+      //     list: ["1. じゃがいもを茹で、皮をむき、一口大に切る", "2. 鶏肉をグリルで焼く", "3. きゅうりとトマトを切って、マヨネーズで和える", "4. じゃがいもと鶏肉を盛り付け、2と3を添える"]
+      //   },
+      //   {
+      //     title: "じゃがいもと鶏肉のスープ",
+      //     material: ["じゃがいも6個", "鶏ムネ肉2Kg", "にんじん", "玉ねぎ", "水"],
+      //     list: ["1. じゃがいも、にんじん、玉ねぎを一口大に切る", "2. 鍋に水を加え、野菜と鶏肉を入れて火にかける", "3. 中火で15分煮込む"]
+      //   }
+      // ]
+      // さあ、この３つの献立でゲストの舌を唸らせてやろう！]
+
       console.log(JSON.stringify(body));
       res.status(200);
       res.send(JSON.stringify(body));
@@ -278,7 +299,6 @@ app.post("/propose/", async (req, res) => {
       console.log("該当なし");
   }
 });
-
 
 // app.get('*', (req, res) => {
 //   res.sendFile(path.join(__dirname, 'build', 'index.html'));
